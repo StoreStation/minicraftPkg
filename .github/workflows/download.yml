@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set Release Date
-        id: date
-        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        id: get_date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       - name: Download and Extract Original Archive
         run: |
@@ -31,12 +31,14 @@ jobs:
           cd ../../../
 
       - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.run_id }}
+          name: ${{ steps.get_date.outputs.date }}
+          body: "Automated repackaging of Minicraft PSP. Build ID: ${{ github.run_id }}"
+          files: MinicraftOptimized.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${{ github.run_id }}" MinicraftOptimized.zip \
-            --title "${{ env.DATE }}" \
-            --notes "Automated repackaging of Minicraft PSP. Build ID: ${{ github.run_id }}"
 
       - name: Update storepkg.json
         run: |
