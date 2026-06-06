@@ -4,7 +4,7 @@
   "name": "Minicraft",
   "author": "koutsie",
   "description": "Minicraft is a 2D top-down action game\ndesigned and programmed by Markus Persson for the 22nd Ludum Dare.",
-  "tag": "app",
+  "tag": "game",
   "link": "https://www.komstation.com/downloads/minicraft-psp/",
   "image": "githubusercontent:StoreStation/minicraftPkg/refs/heads/main/preview.jpg",
   "version": "10",
