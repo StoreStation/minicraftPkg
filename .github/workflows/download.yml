@@ -1,0 +1,68 @@
+name: Repackage and Release Minicraft PSP
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set Release Date
+        id: date
+        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Download and Extract Original Archive
+        run: |
+          wget -q https://www.komstation.com/wp-content/uploads/MinicraftPSP.zip -O MinicraftPSP.zip
+          unzip -q MinicraftPSP.zip -d extracted_data
+
+      - name: Repackage Zip
+        run: |
+          cd extracted_data/PSP/GAME
+          zip -r ../../../MinicraftOptimized.zip MinicraftOptimized/
+          cd ../../../
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.run_id }}" MinicraftOptimized.zip \
+            --title "${{ env.DATE }}" \
+            --notes "Automated repackaging of Minicraft PSP. Build ID: ${{ github.run_id }}"
+
+      - name: Update storepkg.json
+        run: |
+          cd extracted_data/PSP/GAME
+          
+          find MinicraftOptimized -type f > file_list.txt
+          
+          jq -R -n '[inputs | {file: ., target: ("ms0:/PSP/GAME/" + .)}]' file_list.txt > $GITHUB_WORKSPACE/targets.json
+          
+          cd $GITHUB_WORKSPACE
+          
+          jq --slurpfile new_targets targets.json '.download.targets = $new_targets[0]' storepkg.json > storepkg_temp.json
+          mv storepkg_temp.json storepkg.json
+          
+          rm targets.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add storepkg.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes in storepkg.json to commit."
+          else
+            git commit -m "chore: auto-update storepkg.json targets for build ${{ github.run_id }} [skip ci]"
+            git push
+          fi
