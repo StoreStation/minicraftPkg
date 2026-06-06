@@ -7,7 +7,7 @@
   "tag": "app",
   "link": "https://www.komstation.com/downloads/minicraft-psp/",
   "image": "githubusercontent:StoreStation/minicraftPkg/refs/heads/main/preview.jpg",
-  "version": "10",
+  "version": "0",
   "download": {
     "remote": "github:StoreStation/minicraftPkg/releases/latest/download/MinicraftOptimized.zip",
     "compressed": true,

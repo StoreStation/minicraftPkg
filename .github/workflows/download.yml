@@ -44,13 +44,15 @@ jobs:
         run: |
           cd extracted_data/PSP/GAME
           
+          NEW_VERSION=$(head -n 1 MinicraftOptimized/changelog.txt | tr -d '\r')
+          
           find MinicraftOptimized -type f > file_list.txt
           
           jq -R -n '[inputs | {file: ., target: ("ms0:/PSP/GAME/" + .)}]' file_list.txt > $GITHUB_WORKSPACE/targets.json
           
           cd $GITHUB_WORKSPACE
           
-          jq --slurpfile new_targets targets.json '.download.targets = $new_targets[0]' storepkg.json > storepkg_temp.json
+          jq --arg version "$NEW_VERSION" --slurpfile new_targets targets.json '.download.targets = $new_targets[0] | .version = $version' storepkg.json > storepkg_temp.json
           mv storepkg_temp.json storepkg.json
           
           rm targets.json
