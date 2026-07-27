@@ -13,20 +13,8 @@
     "compressed": true,
     "targets": [
       {
-        "file": "MinicraftOptimized/changelog.txt",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/changelog.txt"
-      },
-      {
-        "file": "MinicraftOptimized/sounds/bossdeath.wav",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/bossdeath.wav"
-      },
-      {
-        "file": "MinicraftOptimized/sounds/test.wav",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/test.wav"
-      },
-      {
-        "file": "MinicraftOptimized/sounds/monsterhurt.wav",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/monsterhurt.wav"
+        "file": "MinicraftOptimized/sounds/title.at3",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/title.at3"
       },
       {
         "file": "MinicraftOptimized/sounds/playerhurt.wav",
@@ -37,32 +25,44 @@
         "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/pickup.wav"
       },
       {
-        "file": "MinicraftOptimized/sounds/achievement.wav",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/achievement.wav"
+        "file": "MinicraftOptimized/sounds/menu.wav",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/menu.wav"
       },
       {
-        "file": "MinicraftOptimized/sounds/title.at3",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/title.at3"
+        "file": "MinicraftOptimized/sounds/monsterhurt.wav",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/monsterhurt.wav"
+      },
+      {
+        "file": "MinicraftOptimized/sounds/bossdeath.wav",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/bossdeath.wav"
       },
       {
         "file": "MinicraftOptimized/sounds/craft.wav",
         "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/craft.wav"
       },
       {
-        "file": "MinicraftOptimized/sounds/menu.wav",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/menu.wav"
+        "file": "MinicraftOptimized/sounds/test.wav",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/test.wav"
+      },
+      {
+        "file": "MinicraftOptimized/sounds/achievement.wav",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/achievement.wav"
       },
       {
         "file": "MinicraftOptimized/sounds/death.wav",
         "target": "ms0:/PSP/GAME/MinicraftOptimized/sounds/death.wav"
       },
       {
+        "file": "MinicraftOptimized/icons.png",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/icons.png"
+      },
+      {
         "file": "MinicraftOptimized/EBOOT.PBP",
         "target": "ms0:/PSP/GAME/MinicraftOptimized/EBOOT.PBP"
       },
       {
-        "file": "MinicraftOptimized/icons.png",
-        "target": "ms0:/PSP/GAME/MinicraftOptimized/icons.png"
+        "file": "MinicraftOptimized/changelog.txt",
+        "target": "ms0:/PSP/GAME/MinicraftOptimized/changelog.txt"
       }
     ]
   }
